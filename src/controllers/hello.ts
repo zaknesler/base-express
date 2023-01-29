@@ -1,7 +1,13 @@
-import { Request, Response } from 'express'
+import { type RequestHandler } from 'express'
 
-export const index = (_: Request, res: Response): Response => {
+export const index: RequestHandler = async (req, res) => {
+  const name = req.query.name || 'world'
+
   return res.status(200).json({
-    message: 'Hello, world!',
+    message: `Hello, ${name}!`,
   })
+}
+
+export const post: RequestHandler = async (req, res) => {
+  return res.status(200).json(req.body)
 }

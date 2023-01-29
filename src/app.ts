@@ -1,10 +1,11 @@
-import express, { Express } from 'express'
+import express from 'express'
 import * as hello from './controllers/hello'
-import * as example from './controllers/example'
 
-const app: Express = express()
+const app = express()
+
+app.use(express.json())
 
 app.get('/', hello.index)
-app.get('/example', example.index)
+app.post('/', hello.post)
 
 export default app
